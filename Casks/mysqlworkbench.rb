@@ -26,6 +26,13 @@ cask "mysqlworkbench" do
   on_big_sur :or_newer do
     version "8.0.32"
     sha256 "746549812eae490c94501de2c4b784c178cd936049e5853bb264fea8b802b081"
+
+    # 8.0.32 is reported to have critical problems on arm <https://bugs.mysql.com/bug.php?id=109671>
+    on_arm do
+      version "8.0.31"
+      sha256 "6807ac1138c424c57d7e912c08301a838a90935dd0fc7a5658d3ded23f98a865"
+    end
+    
     url "https://cdn.mysql.com/Downloads/MySQLGUITools/mysql-workbench-community-#{version}-macos-x86_64.dmg"
 
     livecheck do
